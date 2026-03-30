@@ -7,7 +7,9 @@ import string
 def generate_hash(input_string, algorithm):
     hash_object = hashlib.new(algorithm)
     hash_object.update(input_string.encode('utf-8'))
+    # hashed_data = hash_object.hexdigest
     print(f"{algorithm}: {hash_object.hexdigest()}")
+    print(f"input length: {len(input_string)} hash length:{len(hash_object.hexdigest())}")
 
 def get_hash_bin_from_bytes(byte_data, algorithm):
     h = hashlib.new(algorithm)
