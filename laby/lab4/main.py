@@ -8,7 +8,6 @@ def encrypt(plaintext, key, mode):
     cipher = AES.new(key, mode)
     ciphertext = cipher.encrypt(pad(plaintext.encode(), AES.block_size))
     
-    # Zwracamy szyfrogram oraz wektor inicjujący (w zależności od trybu)
     if mode == AES.MODE_ECB:
         return ciphertext, None
     elif mode == AES.MODE_CTR:
@@ -17,7 +16,6 @@ def encrypt(plaintext, key, mode):
         return ciphertext, cipher.iv
 
 def decrypt(ciphertext, key, mode, iv_or_nonce):
-    # Tworzymy obiekt cipher podając odpowiedni parametr startowy
     if mode == AES.MODE_ECB:
         cipher = AES.new(key, mode)
     elif mode == AES.MODE_CTR:
@@ -32,7 +30,7 @@ def main():
     csv_filename = "results.csv"
     with open(csv_filename, mode='a', newline='') as csv_file:
         csv_writer = csv.writer(csv_file)
-        csv_writer.writerow(["Mode", "Encryption Time (s)", "Decryption Time (s), file size"])
+        csv_writer.writerow(["Mode", "Encryption Time (s)", "Decryption Time (s)", "File Size (bytes)"])
 
     data = os.listdir('data')
     for filename in data:
