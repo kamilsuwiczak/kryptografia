@@ -47,12 +47,12 @@ def manual_cbc_decrypt(ciphertext, key, iv):
 if __name__ == "__main__":
     key = b'1234567890123456'
     iv = os.urandom(16)
-    message = b"Sekretna wiadomosc do zaszyfrowania!"
+    message = b"Wiadomosc do zaszyfrowania"
     
     print("Oryginalna wiadomość:", message)
     
     my_ciphertext = manual_cbc_encrypt(message, key, iv)
-    print("Szyfrogram (własne CBC):", my_ciphertext.hex())
+    print("Szyfrogram:", my_ciphertext.hex())
     
     my_decrypted = manual_cbc_decrypt(my_ciphertext, key, iv)
     print("Zdeszyfrowana wiadomość:", my_decrypted.decode('utf-8'))
